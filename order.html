@@ -301,6 +301,24 @@
         object-fit: contain; /* Đảm bảo ảnh không bị cắt xén */
         border-radius: 8px;
       }
+      /* === START: Thêm Animation và Shadow cho ảnh bánh === */
+      @keyframes breathing {
+        0%,
+        100% {
+          transform: scale(1);
+          filter: drop-shadow(0 4px 3px rgba(0, 0, 0, 0.07))
+            drop-shadow(0 2px 2px rgba(0, 0, 0, 0.06));
+        }
+        50% {
+          transform: scale(1.03);
+          filter: drop-shadow(0 10px 8px rgba(0, 0, 0, 0.04))
+            drop-shadow(0 4px 3px rgba(0, 0, 0, 0.1));
+        }
+      }
+      .cake-img-animated {
+        animation: breathing 3.5s ease-in-out infinite;
+      }
+      /* === END: Thêm Animation và Shadow cho ảnh bánh === */
       .cake-card {
         width: 100%; /* Đảm bảo card rộng hết cột */
       }
@@ -962,7 +980,7 @@
 
         if (button && minusButton) {
           button.textContent =
-            currentQuantity > 0 ? `Thêm (+) (${currentQuantity})` : "Chọn";
+            currentQuantity > 0 ? `THÊM (+) (${currentQuantity})` : "CHỌN";
           button.classList.toggle("bg-yellow-600", currentQuantity > 0);
           button.classList.toggle("bg-yellow-400", currentQuantity === 0);
 
@@ -1059,7 +1077,7 @@
                                 <img 
                                     src="${item.imageSrc}" 
                                     alt="${itemName}" 
-                                    class="cake-img object-contain rounded-lg mb-2"
+                                    class="cake-img object-contain rounded-lg mb-2 cake-img-animated"
                                     onerror="this.onerror=null; this.src='https://placehold.co/144x144/F9FBE7/78350F?text=Cake';"
                                 />
                                 <h4 class="text-md font-bold line-clamp-2 min-h-[40px] lobster-font cake-title-style">${itemName}</h4> <!-- ÁP DỤNG FONT CHO TÊN SẢN PHẨM -->
@@ -1080,7 +1098,7 @@
                                         data-item="${itemName}" 
                                         data-price="${itemPrice}" 
                                         data-action="plus"
-                                        class="select-btn font-bold py-1 rounded-full w-3/4 hover:bg-yellow-500 transition ${buttonClass} lobster-font select-btn-text" <!-- ÁP DỤNG FONT VÀ MÀU TRẮNG ĐỔ BÓNG -->
+                                        class="select-btn font-bold py-1 rounded-full w-3/4 hover:bg-yellow-500 transition ${buttonClass} select-btn-text"
                                     >
                                         ${buttonText}
                                     </button>
