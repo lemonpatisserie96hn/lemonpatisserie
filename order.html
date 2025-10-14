@@ -43,7 +43,6 @@
       .lemon-text {
         color: var(--dark-orange);
       }
-      /* START CHANGE: Cập nhật style cho card sản phẩm */
       .cake-card {
         transition: transform 0.2s, box-shadow 0.2s;
         display: flex;
@@ -53,7 +52,6 @@
         backdrop-filter: blur(8px);
         -webkit-backdrop-filter: blur(8px); /* Hỗ trợ Safari */
       }
-      /* END CHANGE */
       .cake-card:hover {
         transform: translateY(-3px);
         box-shadow: 0 20px 25px -5px rgb(0 0 0 / 0.1),
@@ -170,119 +168,41 @@
         }
       }
 
-      /* Áp dụng styling animation bánh rơi từ index.html */
-      .bg-animated-item:nth-child(1) {
-        left: 10%;
-        animation-duration: 12.5s;
-        animation-delay: 0s;
-        width: 65px;
-        height: 65px;
-      }
-      .bg-animated-item:nth-child(2) {
-        left: 30%;
-        animation-duration: 15s;
-        animation-delay: 2.5s;
-        width: 55px;
-        height: 55px;
-      }
-      .bg-animated-item:nth-child(3) {
-        left: 50%;
-        animation-duration: 10s;
-        animation-delay: 5s;
-        width: 70px;
-        height: 70px;
-      }
-      .bg-animated-item:nth-child(4) {
-        left: 70%;
-        animation-duration: 17.5s;
-        animation-delay: 7.5s;
-        width: 60px;
-        height: 60px;
-      }
-      .bg-animated-item:nth-child(5) {
-        left: 90%;
-        animation-duration: 14s;
-        animation-delay: 10s;
-        width: 75px;
-        height: 75px;
-      }
-      .bg-animated-item:nth-child(6) {
-        left: 5%;
-        animation-duration: 16s;
-        animation-delay: 12.5s;
-        width: 62px;
-        height: 62px;
-      }
-      .bg-animated-item:nth-child(7) {
-        left: 85%;
-        animation-duration: 13s;
-        animation-delay: 15s;
-        width: 68px;
-        height: 68px;
-      }
-      .bg-animated-item:nth-child(8) {
-        left: 45%;
-        animation-duration: 19s;
-        animation-delay: 17.5s;
-        width: 58px;
-        height: 58px;
-      }
-      .bg-animated-item:nth-child(9) {
-        left: 20%;
-        animation-duration: 11s;
-        animation-delay: 1s;
-        width: 65px;
-        height: 65px;
-      }
-      .bg-animated-item:nth-child(10) {
-        left: 40%;
-        animation-duration: 15.5s;
-        animation-delay: 3.5s;
-        width: 55px;
-        height: 55px;
-      }
-      .bg-animated-item:nth-child(11) {
-        left: 60%;
-        animation-duration: 12s;
-        animation-delay: 6s;
-        width: 70px;
-        height: 70px;
-      }
-      .bg-animated-item:nth-child(12) {
-        left: 80%;
-        animation-duration: 18s;
-        animation-delay: 8.5s;
-        width: 60px;
-        height: 60px;
-      }
-      .bg-animated-item:nth-child(13) {
-        left: 15%;
-        animation-duration: 14.5s;
-        animation-delay: 11s;
-        width: 75px;
-        height: 75px;
-      }
-      .bg-animated-item:nth-child(14) {
-        left: 25%;
-        animation-duration: 16.5s;
-        animation-delay: 13.5s;
-        width: 62px;
-        height: 62px;
-      }
-      .bg-animated-item:nth-child(15) {
-        left: 55%;
-        animation-duration: 13.5s;
-        animation-delay: 16s;
-        width: 68px;
-        height: 68px;
-      }
-      .bg-animated-item:nth-child(16) {
-        left: 75%;
-        animation-duration: 17s;
-        animation-delay: 18.5s;
-        width: 58px;
-        height: 58px;
-      }
+      /* Lớp 1: Bánh nhỏ */
+      .bg-animated-item:nth-child(1) { left: 10%; animation-duration: 12.5s; animation-delay: 0s; width: 65px; height: 65px; }
+      .bg-animated-item:nth-child(2) { left: 30%; animation-duration: 15s; animation-delay: 2.5s; width: 55px; height: 55px; }
+      .bg-animated-item:nth-child(3) { left: 50%; animation-duration: 10s; animation-delay: 5s; width: 70px; height: 70px; }
+      .bg-animated-item:nth-child(4) { left: 70%; animation-duration: 17.5s; animation-delay: 7.5s; width: 60px; height: 60px; }
+      .bg-animated-item:nth-child(5) { left: 90%; animation-duration: 14s; animation-delay: 10s; width: 75px; height: 75px; }
+      .bg-animated-item:nth-child(6) { left: 5%; animation-duration: 16s; animation-delay: 12.5s; width: 62px; height: 62px; }
+      .bg-animated-item:nth-child(7) { left: 85%; animation-duration: 13s; animation-delay: 15s; width: 68px; height: 68px; }
+      .bg-animated-item:nth-child(8) { left: 45%; animation-duration: 19s; animation-delay: 17.5s; width: 58px; height: 58px; }
+      .bg-animated-item:nth-child(9) { left: 20%; animation-duration: 11s; animation-delay: 1s; width: 65px; height: 65px; }
+      .bg-animated-item:nth-child(10) { left: 40%; animation-duration: 15.5s; animation-delay: 3.5s; width: 55px; height: 55px; }
+      .bg-animated-item:nth-child(11) { left: 60%; animation-duration: 12s; animation-delay: 6s; width: 70px; height: 70px; }
+      .bg-animated-item:nth-child(12) { left: 80%; animation-duration: 18s; animation-delay: 8.5s; width: 60px; height: 60px; }
+      .bg-animated-item:nth-child(13) { left: 15%; animation-duration: 14.5s; animation-delay: 11s; width: 75px; height: 75px; }
+      .bg-animated-item:nth-child(14) { left: 25%; animation-duration: 16.5s; animation-delay: 13.5s; width: 62px; height: 62px; }
+      .bg-animated-item:nth-child(15) { left: 55%; animation-duration: 13.5s; animation-delay: 16s; width: 68px; height: 68px; }
+      .bg-animated-item:nth-child(16) { left: 75%; animation-duration: 17s; animation-delay: 18.5s; width: 58px; height: 58px; }
+
+      /* Lớp 2 - Bánh lớn (Tạo hiệu ứng 3D) */
+      .bg-animated-item:nth-child(17) { left: 15%; animation-duration: 13s; animation-delay: 0.5s; width: 130px; height: 130px; }
+      .bg-animated-item:nth-child(18) { left: 35%; animation-duration: 15.5s; animation-delay: 3s; width: 110px; height: 110px; }
+      .bg-animated-item:nth-child(19) { left: 55%; animation-duration: 10.5s; animation-delay: 5.5s; width: 140px; height: 140px; }
+      .bg-animated-item:nth-child(20) { left: 75%; animation-duration: 18s; animation-delay: 8s; width: 120px; height: 120px; }
+      .bg-animated-item:nth-child(21) { left: 95%; animation-duration: 14.5s; animation-delay: 10.5s; width: 150px; height: 150px; }
+      .bg-animated-item:nth-child(22) { left: 2%; animation-duration: 16.5s; animation-delay: 13s; width: 124px; height: 124px; }
+      .bg-animated-item:nth-child(23) { left: 88%; animation-duration: 13.5s; animation-delay: 15.5s; width: 136px; height: 136px; }
+      .bg-animated-item:nth-child(24) { left: 48%; animation-duration: 19.5s; animation-delay: 18s; width: 116px; height: 116px; }
+      .bg-animated-item:nth-child(25) { left: 23%; animation-duration: 11.5s; animation-delay: 1.5s; width: 130px; height: 130px; }
+      .bg-animated-item:nth-child(26) { left: 43%; animation-duration: 16s; animation-delay: 4s; width: 110px; height: 110px; }
+      .bg-animated-item:nth-child(27) { left: 63%; animation-duration: 12.5s; animation-delay: 6.5s; width: 140px; height: 140px; }
+      .bg-animated-item:nth-child(28) { left: 83%; animation-duration: 18.5s; animation-delay: 9s; width: 120px; height: 120px; }
+      .bg-animated-item:nth-child(29) { left: 18%; animation-duration: 15s; animation-delay: 11.5s; width: 150px; height: 150px; }
+      .bg-animated-item:nth-child(30) { left: 28%; animation-duration: 17s; animation-delay: 14s; width: 124px; height: 124px; }
+      .bg-animated-item:nth-child(31) { left: 58%; animation-duration: 14s; animation-delay: 16.5s; width: 136px; height: 136px; }
+      .bg-animated-item:nth-child(32) { left: 78%; animation-duration: 17.5s; animation-delay: 19s; width: 116px; height: 116px; }
 
       /* Căn chỉnh Review Modal Items */
       .review-item {
@@ -327,6 +247,20 @@
             0 0 40px #ff7f50, 0 0 50px #ff7f50;
         }
       }
+
+      /* Thêm hiệu ứng cho icon Event */
+      .event-glow {
+        animation: event-breathing 1.5s ease-out infinite;
+      }
+
+      @keyframes event-breathing {
+          0%, 100% {
+              filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 6px #fde047) drop-shadow(0 0 10px #fde047);
+          }
+          50% {
+              filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 12px #fde047) drop-shadow(0 0 20px #fde047);
+          }
+      }
       /* === END: Thêm hiệu ứng cho Navbar === */
 
       /* START: Style cho ảnh nền danh mục */
@@ -337,10 +271,8 @@
         width: 100%;
         height: 100%;
         object-fit: cover; /* Tự động crop ảnh để vừa vặn */
-        /* START CHANGE: Tăng độ rõ nét của ảnh nền */
         filter: blur(3px); /* Giảm độ mờ */
         opacity: 0.25; /* Tăng độ đậm */
-        /* END CHANGE */
         z-index: 0; /* Nằm dưới các sản phẩm */
         pointer-events: none; /* Không cho phép click vào ảnh */
         border-radius: 0.5rem; /* Bo góc nhẹ */
@@ -358,6 +290,40 @@
 
     <!-- BACKGROUND ANIMATION (MƯA BÁNH NGỌT) -->
     <div id="background-animation-container">
+      <!-- Lớp 1: Bánh nhỏ -->
+      <img
+        class="bg-animated-item"
+        src="images/icon1.png"
+        alt="Bánh ngọt rơi"
+      />
+      <img
+        class="bg-animated-item"
+        src="images/icon2.png"
+        alt="Bánh ngọt rơi"
+      />
+      <img class="bg-animated-item" src="images/3.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/4.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/5.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/6.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/7.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/8.png" alt="Bánh ngọt rơi" />
+      <img
+        class="bg-animated-item"
+        src="images/icon2.png"
+        alt="Bánh ngọt rơi"
+      />
+      <img
+        class="bg-animated-item"
+        src="images/icon1.png"
+        alt="Bánh ngọt rơi"
+      />
+      <img class="bg-animated-item" src="images/3.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/4.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/6.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/5.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/8.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/7.png" alt="Bánh ngọt rơi" />
+      <!-- Lớp 2 - Bánh lớn -->
       <img
         class="bg-animated-item"
         src="images/icon1.png"
@@ -399,29 +365,43 @@
         background-image: linear-gradient(to right, #fff085, #fcb454, #ff9b17);
       "
     >
-      <div
-        class="max-w-4xl mx-auto p-4 flex justify-between items-center flex-wrap"
-      >
+      <div class="max-w-4xl mx-auto p-4 flex justify-between items-center">
+        <!-- Left: Title -->
         <h1 class="text-3xl font-black text-gray-900 lobster-font">
           Lemon <span class="lemon-text">Patisserie</span>
         </h1>
-        <div class="flex items-center space-x-2 oven-glow">
+
+        <!-- Center: Oven Time (ẩn trên màn hình nhỏ để cân đối) -->
+        <div class="hidden md:flex items-center space-x-2 oven-glow">
           <img src="images/fire.gif" alt="Oven icon" class="h-7 w-7" />
           <div class="text-sm font-bold">
             <p>Ra lò lúc:</p>
             <p>10:00 AM & 07:00 PM</p>
           </div>
         </div>
-        <div class="flex items-center space-x-4">
-          <!-- Icon Sự kiện -->
+
+        <!-- Right: Icons -->
+        <div class="flex items-center space-x-3 sm:space-x-4">
+          <!-- Icon Sự kiện (thay bằng GIF) -->
           <a
             href="event.html"
-            class="p-2 rounded-full hover:bg-yellow-300 transition"
+            class="transition transform hover:scale-110"
             aria-label="Xem sự kiện"
+          >
+            <!-- START CHANGE: Chỉnh lại kích thước icon -->
+            <img src="event.gif" alt="Sự kiện" class="h-10 w-10 event-glow" />
+            <!-- END CHANGE -->
+          </a>
+
+          <!-- Menu Button -->
+          <button
+            id="menu-toggle-btn"
+            class="p-2 rounded-full hover:bg-yellow-300/60 transition"
+            aria-label="Mở menu điều hướng"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 text-gray-800"
+              class="h-7 w-7 text-gray-800"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -430,33 +410,11 @@
               <path
                 stroke-linecap="round"
                 stroke-linejoin="round"
-                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
+                d="M4 6h16M4 12h16M4 18h16"
               />
             </svg>
-          </a>
-
-          <!-- Nút Menu cũ -->
+          </button>
         </div>
-        <button
-          id="menu-toggle-btn"
-          class="p-2 rounded-full hover:bg-yellow-300 transition"
-          aria-label="Mở menu điều hướng"
-        >
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 text-gray-800"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M4 6h16M4 12h16M4 18h16"
-            />
-          </svg>
-        </button>
       </div>
     </header>
 
@@ -1092,15 +1050,7 @@
                 </div>
                 
                 <div class="category-content ${contentClass} p-4 relative overflow-hidden">
-                    <!-- START: Thêm ảnh nền mờ -->
-                    <img 
-                        src="images/bgimg.png" 
-                        alt="Decorative background" 
-                        class="category-background-image"
-                        aria-hidden="true"
-                        onerror="this.style.display='none'"
-                    />
-                    <!-- END: Thêm ảnh nền mờ -->
+                    <img src="images/bgimg.png" alt="Decorative background" class="category-background-image" aria-hidden="true" onerror="this.style.display='none'"/>
                     <div class="grid grid-cols-2 sm:grid-cols-2 gap-4 md:gap-6 relative z-10">
                         ${categoryItems
                           .map((item) => {
@@ -1124,7 +1074,6 @@
                               ? `<p class="text-xs text-gray-600 mt-1 min-h-[40px]">${item.description}</p>`
                               : '<div class="min-h-[40px]"></div>';
 
-                            // START CHANGE: Xóa class bg-white để áp dụng hiệu ứng transparent blur
                             return `
                               <div class="cake-card rounded-xl shadow-lg overflow-hidden p-3 text-center border flex flex-col">
                                 <img 
@@ -1148,22 +1097,17 @@
                                             data-action="minus"
                                             class="text-red-500 font-bold p-1 rounded-full border border-red-500 w-1/4 hover:bg-red-100 transition disabled:opacity-30 ${minusDisabled}"
                                             ${minusDisabled}
-                                        >
-                                            -
-                                        </button>
+                                        >-</button>
                                         <button 
                                             data-item="${itemName}" 
                                             data-price="${itemPrice}" 
                                             data-action="plus"
                                             class="select-btn font-bold py-1 rounded-full w-3/4 hover:bg-yellow-500 transition ${buttonClass} select-btn-text"
-                                        >
-                                            ${buttonText}
-                                        </button>
+                                        >${buttonText}</button>
                                     </div>
                                 </div>
                               </div>
                             `;
-                            // END CHANGE
                           })
                           .join("")}
                     </div>
@@ -1198,16 +1142,15 @@
               : item;
 
             html += `
-                      <div class="review-item border-b pb-2 pt-2">
-                          <span class="text-gray-700">${displayItemName}</span>
-                          <span class="review-quantity font-bold text-sm text-gray-800">x${
-                            data.quantity
-                          }</span>
-                          <span class="review-price text-sm font-semibold">${formatCurrency(
-                            data.price
-                          )}</span>
-                      </div>
-                  `;
+              <div class="review-item border-b pb-2 pt-2">
+                  <span class="text-gray-700">${displayItemName}</span>
+                  <span class="review-quantity font-bold text-sm text-gray-800">x${
+                    data.quantity
+                  }</span>
+                  <span class="review-price text-sm font-semibold">${formatCurrency(
+                    data.price
+                  )}</span>
+              </div>`;
           });
         }
 
@@ -1371,7 +1314,7 @@
             <img
               src="images/fbicon.webp"
               alt="Facebook Icon"
-              class="social-icon-img"
+              class="w-10 h-10 object-cover"
               onerror="this.onerror=null; this.src='https://placehold.co/40x40/3B5998/FFFFFF?text=FB';"
             />
           </a>
@@ -1385,7 +1328,7 @@
             <img
               src="images/Instagram_icon.png"
               alt="Instagram Icon"
-              class="social-icon-img"
+              class="w-10 h-10 object-cover"
               onerror="this.onerror=null; this.src='https://placehold.co/40x40/E1306C/FFFFFF?text=IG';"
             />
           </a>
@@ -1399,7 +1342,7 @@
             <img
               src="images/tiktokicon.png"
               alt="TikTok Icon"
-              class="social-icon-img"
+              class="w-10 h-10 object-cover"
               onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=TK';"
             />
           </a>

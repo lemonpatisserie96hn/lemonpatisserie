@@ -28,22 +28,46 @@
         color: var(--dark-orange);
         text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
       }
-      /* Hiệu ứng cho Navbar */
+
+      /* === START: Đồng bộ hiệu ứng Navbar từ order.html === */
       .oven-glow {
         color: white;
         text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff7f50,
           0 0 20px #ff7f50, 0 0 25px #ff7f50;
         animation: breathing 1s ease-out infinite;
       }
+
       @keyframes breathing {
         0%,
         100% {
           transform: scale(1);
+          text-shadow: 0 0 5px #fff, 0 0 10px #fff, 0 0 15px #ff7f50,
+            0 0 20px #ff7f50, 0 0 25px #ff7f50;
         }
         50% {
           transform: scale(1.05);
+          text-shadow: 0 0 10px #fff, 0 0 20px #ff7f50, 0 0 30px #ff7f50,
+            0 0 40px #ff7f50, 0 0 50px #ff7f50;
         }
       }
+
+      .event-glow {
+        animation: event-breathing 1.5s ease-out infinite;
+      }
+
+      @keyframes event-breathing {
+        0%,
+        100% {
+          filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 6px #fde047)
+            drop-shadow(0 0 10px #fde047);
+        }
+        50% {
+          filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 12px #fde047)
+            drop-shadow(0 0 20px #fde047);
+        }
+      }
+      /* === END: Đồng bộ hiệu ứng Navbar === */
+
       /* Styles cho Card sự kiện */
       .event-card {
         background-color: rgba(255, 255, 255, 0.8);
@@ -54,6 +78,9 @@
       .event-card:hover {
         transform: translateY(-5px);
         box-shadow: 0 10px 20px rgba(0, 0, 0, 0.1);
+      }
+      .lemon-text {
+        color: var(--dark-orange);
       }
       /* Sidebar Menu */
       #sidebar-menu {
@@ -83,7 +110,8 @@
       #sidebar-overlay.active {
         display: block;
       }
-      /* Animation nền */
+
+      /* === START: Đồng bộ hiệu ứng bánh rơi từ order.html === */
       .bg-animated-item {
         position: fixed;
         top: -10%;
@@ -91,11 +119,14 @@
         height: 65px;
         opacity: 0;
         animation: fall-in-background linear infinite;
-        z-index: -1;
+        z-index: 0;
+        user-select: none;
+        pointer-events: none;
       }
+
       @keyframes fall-in-background {
         0% {
-          transform: translateY(0) rotate(0deg);
+          transform: translateY(-100%) rotate(0deg);
           opacity: 0;
         }
         10% {
@@ -109,111 +140,350 @@
           opacity: 0;
         }
       }
-      /* Footer icon */
-      .social-icon-img {
-        width: 40px;
-        height: 40px;
-        transition: transform 0.3s;
+
+      /* Lớp 1: Bánh nhỏ */
+      .bg-animated-item:nth-child(1) {
+        left: 10%;
+        animation-duration: 12.5s;
+        animation-delay: 0s;
+        width: 65px;
+        height: 65px;
       }
-      .social-icon-img:hover {
-        transform: scale(1.25);
+      .bg-animated-item:nth-child(2) {
+        left: 30%;
+        animation-duration: 15s;
+        animation-delay: 2.5s;
+        width: 55px;
+        height: 55px;
       }
+      .bg-animated-item:nth-child(3) {
+        left: 50%;
+        animation-duration: 10s;
+        animation-delay: 5s;
+        width: 70px;
+        height: 70px;
+      }
+      .bg-animated-item:nth-child(4) {
+        left: 70%;
+        animation-duration: 17.5s;
+        animation-delay: 7.5s;
+        width: 60px;
+        height: 60px;
+      }
+      .bg-animated-item:nth-child(5) {
+        left: 90%;
+        animation-duration: 14s;
+        animation-delay: 10s;
+        width: 75px;
+        height: 75px;
+      }
+      .bg-animated-item:nth-child(6) {
+        left: 5%;
+        animation-duration: 16s;
+        animation-delay: 12.5s;
+        width: 62px;
+        height: 62px;
+      }
+      .bg-animated-item:nth-child(7) {
+        left: 85%;
+        animation-duration: 13s;
+        animation-delay: 15s;
+        width: 68px;
+        height: 68px;
+      }
+      .bg-animated-item:nth-child(8) {
+        left: 45%;
+        animation-duration: 19s;
+        animation-delay: 17.5s;
+        width: 58px;
+        height: 58px;
+      }
+      .bg-animated-item:nth-child(9) {
+        left: 20%;
+        animation-duration: 11s;
+        animation-delay: 1s;
+        width: 65px;
+        height: 65px;
+      }
+      .bg-animated-item:nth-child(10) {
+        left: 40%;
+        animation-duration: 15.5s;
+        animation-delay: 3.5s;
+        width: 55px;
+        height: 55px;
+      }
+      .bg-animated-item:nth-child(11) {
+        left: 60%;
+        animation-duration: 12s;
+        animation-delay: 6s;
+        width: 70px;
+        height: 70px;
+      }
+      .bg-animated-item:nth-child(12) {
+        left: 80%;
+        animation-duration: 18s;
+        animation-delay: 8.5s;
+        width: 60px;
+        height: 60px;
+      }
+      .bg-animated-item:nth-child(13) {
+        left: 15%;
+        animation-duration: 14.5s;
+        animation-delay: 11s;
+        width: 75px;
+        height: 75px;
+      }
+      .bg-animated-item:nth-child(14) {
+        left: 25%;
+        animation-duration: 16.5s;
+        animation-delay: 13.5s;
+        width: 62px;
+        height: 62px;
+      }
+      .bg-animated-item:nth-child(15) {
+        left: 55%;
+        animation-duration: 13.5s;
+        animation-delay: 16s;
+        width: 68px;
+        height: 68px;
+      }
+      .bg-animated-item:nth-child(16) {
+        left: 75%;
+        animation-duration: 17s;
+        animation-delay: 18.5s;
+        width: 58px;
+        height: 58px;
+      }
+
+      /* Lớp 2 - Bánh lớn (Tạo hiệu ứng 3D) */
+      .bg-animated-item:nth-child(17) {
+        left: 15%;
+        animation-duration: 13s;
+        animation-delay: 0.5s;
+        width: 130px;
+        height: 130px;
+      }
+      .bg-animated-item:nth-child(18) {
+        left: 35%;
+        animation-duration: 15.5s;
+        animation-delay: 3s;
+        width: 110px;
+        height: 110px;
+      }
+      .bg-animated-item:nth-child(19) {
+        left: 55%;
+        animation-duration: 10.5s;
+        animation-delay: 5.5s;
+        width: 140px;
+        height: 140px;
+      }
+      .bg-animated-item:nth-child(20) {
+        left: 75%;
+        animation-duration: 18s;
+        animation-delay: 8s;
+        width: 120px;
+        height: 120px;
+      }
+      .bg-animated-item:nth-child(21) {
+        left: 95%;
+        animation-duration: 14.5s;
+        animation-delay: 10.5s;
+        width: 150px;
+        height: 150px;
+      }
+      .bg-animated-item:nth-child(22) {
+        left: 2%;
+        animation-duration: 16.5s;
+        animation-delay: 13s;
+        width: 124px;
+        height: 124px;
+      }
+      .bg-animated-item:nth-child(23) {
+        left: 88%;
+        animation-duration: 13.5s;
+        animation-delay: 15.5s;
+        width: 136px;
+        height: 136px;
+      }
+      .bg-animated-item:nth-child(24) {
+        left: 48%;
+        animation-duration: 19.5s;
+        animation-delay: 18s;
+        width: 116px;
+        height: 116px;
+      }
+      .bg-animated-item:nth-child(25) {
+        left: 23%;
+        animation-duration: 11.5s;
+        animation-delay: 1.5s;
+        width: 130px;
+        height: 130px;
+      }
+      .bg-animated-item:nth-child(26) {
+        left: 43%;
+        animation-duration: 16s;
+        animation-delay: 4s;
+        width: 110px;
+        height: 110px;
+      }
+      .bg-animated-item:nth-child(27) {
+        left: 63%;
+        animation-duration: 12.5s;
+        animation-delay: 6.5s;
+        width: 140px;
+        height: 140px;
+      }
+      .bg-animated-item:nth-child(28) {
+        left: 83%;
+        animation-duration: 18.5s;
+        animation-delay: 9s;
+        width: 120px;
+        height: 120px;
+      }
+      .bg-animated-item:nth-child(29) {
+        left: 18%;
+        animation-duration: 15s;
+        animation-delay: 11.5s;
+        width: 150px;
+        height: 150px;
+      }
+      .bg-animated-item:nth-child(30) {
+        left: 28%;
+        animation-duration: 17s;
+        animation-delay: 14s;
+        width: 124px;
+        height: 124px;
+      }
+      .bg-animated-item:nth-child(31) {
+        left: 58%;
+        animation-duration: 14s;
+        animation-delay: 16.5s;
+        width: 136px;
+        height: 136px;
+      }
+      .bg-animated-item:nth-child(32) {
+        left: 78%;
+        animation-duration: 17.5s;
+        animation-delay: 19s;
+        width: 116px;
+        height: 116px;
+      }
+      /* === END: Đồng bộ hiệu ứng bánh rơi === */
     </style>
   </head>
   <body>
-    <!-- BACKGROUND ANIMATION -->
+    <!-- BACKGROUND ANIMATION (Đồng bộ từ order.html) -->
     <div id="background-animation-container">
-      <!-- Các icon bánh rơi -->
+      <!-- Lớp 1: Bánh nhỏ -->
       <img
         class="bg-animated-item"
         src="images/icon1.png"
-        alt=""
-        style="left: 10%; animation-duration: 12s"
+        alt="Bánh ngọt rơi"
       />
       <img
         class="bg-animated-item"
         src="images/icon2.png"
-        alt=""
-        style="left: 20%; animation-duration: 15s; animation-delay: 2s"
+        alt="Bánh ngọt rơi"
+      />
+      <img class="bg-animated-item" src="images/3.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/4.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/5.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/6.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/7.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/8.png" alt="Bánh ngọt rơi" />
+      <img
+        class="bg-animated-item"
+        src="images/icon2.png"
+        alt="Bánh ngọt rơi"
       />
       <img
         class="bg-animated-item"
-        src="images/3.png"
-        alt=""
-        style="left: 30%; animation-duration: 10s; animation-delay: 4s"
+        src="images/icon1.png"
+        alt="Bánh ngọt rơi"
+      />
+      <img class="bg-animated-item" src="images/3.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/4.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/6.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/5.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/8.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/7.png" alt="Bánh ngọt rơi" />
+      <!-- Lớp 2 - Bánh lớn -->
+      <img
+        class="bg-animated-item"
+        src="images/icon1.png"
+        alt="Bánh ngọt rơi"
       />
       <img
         class="bg-animated-item"
-        src="images/4.png"
-        alt=""
-        style="left: 45%; animation-duration: 18s; animation-delay: 1s"
+        src="images/icon2.png"
+        alt="Bánh ngọt rơi"
+      />
+      <img class="bg-animated-item" src="images/3.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/4.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/5.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/6.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/7.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/8.png" alt="Bánh ngọt rơi" />
+      <img
+        class="bg-animated-item"
+        src="images/icon2.png"
+        alt="Bánh ngọt rơi"
       />
       <img
         class="bg-animated-item"
-        src="images/5.png"
-        alt=""
-        style="left: 60%; animation-duration: 14s; animation-delay: 5s"
+        src="images/icon1.png"
+        alt="Bánh ngọt rơi"
       />
-      <img
-        class="bg-animated-item"
-        src="images/6.png"
-        alt=""
-        style="left: 75%; animation-duration: 16s; animation-delay: 7s"
-      />
-      <img
-        class="bg-animated-item"
-        src="images/7.png"
-        alt=""
-        style="left: 90%; animation-duration: 11s; animation-delay: 3s"
-      />
+      <img class="bg-animated-item" src="images/3.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/4.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/6.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/5.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/8.png" alt="Bánh ngọt rơi" />
+      <img class="bg-animated-item" src="images/7.png" alt="Bánh ngọt rơi" />
     </div>
 
-    <!-- HEADER -->
+    <!-- HEADER (Đồng bộ từ order.html) -->
     <header
       class="sticky top-0 z-30 shadow-md"
       style="
         background-image: linear-gradient(to right, #fff085, #fcb454, #ff9b17);
       "
     >
-      <div
-        class="max-w-4xl mx-auto p-4 flex justify-between items-center flex-wrap"
-      >
+      <div class="max-w-4xl mx-auto p-4 flex justify-between items-center">
+        <!-- Left: Title -->
         <h1 class="text-3xl font-black text-gray-900 lobster-font">
-          <a href="index.html"
-            >Lemon <span class="lemon-text">Patisserie</span></a
-          >
+          Lemon <span class="lemon-text">Patisserie</span>
         </h1>
-        <div class="flex items-center space-x-4">
+
+        <!-- Center: Oven Time (ẩn trên màn hình nhỏ để cân đối) -->
+        <div class="hidden md:flex items-center space-x-2 oven-glow">
+          <img src="images/fire.gif" alt="Oven icon" class="h-7 w-7" />
+          <div class="text-sm font-bold">
+            <p>Ra lò lúc:</p>
+            <p>10:00 AM & 07:00 PM</p>
+          </div>
+        </div>
+
+        <!-- Right: Icons -->
+        <div class="flex items-center space-x-3 sm:space-x-4">
           <!-- Icon Sự kiện -->
           <a
             href="event.html"
-            class="p-2 rounded-full bg-yellow-300 transition"
+            class="transition transform hover:scale-110"
             aria-label="Xem sự kiện"
           >
-            <svg
-              xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 text-gray-800"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-              stroke-width="2"
-            >
-              <path
-                stroke-linecap="round"
-                stroke-linejoin="round"
-                d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"
-              />
-            </svg>
+            <img src="event.gif" alt="Sự kiện" class="h-12 w-12 event-glow" />
           </a>
-          <!-- Icon Menu -->
+
+          <!-- Menu Button -->
           <button
             id="menu-toggle-btn"
-            class="p-2 rounded-full hover:bg-yellow-300 transition"
-            aria-label="Mở menu"
+            class="p-2 rounded-full hover:bg-yellow-300/60 transition"
+            aria-label="Mở menu điều hướng"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
-              class="h-6 w-6 text-gray-800"
+              class="h-7 w-7 text-gray-800"
               fill="none"
               viewBox="0 0 24 24"
               stroke="currentColor"
@@ -230,7 +500,7 @@
       </div>
     </header>
 
-    <!-- SIDEBAR MENU -->
+    <!-- SIDEBAR MENU (Giữ nguyên của event.html) -->
     <div id="sidebar-overlay"></div>
     <div id="sidebar-menu" class="p-4">
       <h3 class="text-2xl font-black mb-6 pb-2 border-b-2">Điều Hướng</h3>
@@ -256,186 +526,202 @@
     </div>
 
     <!-- MAIN CONTENT -->
-    <main class="max-w-4xl mx-auto p-4 md:p-8">
+    <main class="max-w-4xl mx-auto p-4 md:p-8 relative z-10">
       <h2
         class="text-4xl font-extrabold mb-8 text-center lobster-font cake-title-style"
       >
         Sự Kiện Đặc Biệt Hàng Tuần
       </h2>
 
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+      <!-- START CHANGE: Chuyển sang layout 1 cột và chỉnh sửa thẻ sự kiện -->
+      <div class="grid grid-cols-1 gap-8">
         <!-- Event Cards -->
         <div
-          class="event-card rounded-xl shadow-lg p-4 flex items-center space-x-4"
+          class="event-card rounded-xl shadow-lg p-6 flex flex-col sm:flex-row items-center sm:space-x-6 space-y-4 sm:space-y-0"
         >
           <img
-            src="images/eclair/1.png"
+            src="images/events/1.png"
             alt="Eclair"
-            class="w-24 h-24 object-cover rounded-full border-4 border-yellow-300"
+            class="w-48 h-48 object-cover rounded-xl border-4 border-yellow-300 flex-shrink-0"
           />
-          <div>
-            <h3 class="text-xl font-bold lobster-font text-yellow-600">
+          <div class="text-center sm:text-left">
+            <h3 class="text-2xl font-bold lobster-font text-yellow-600">
               Thứ Hai
             </h3>
-            <p class="text-gray-700">
-              Mua 3 bánh Eclair bất kỳ, được tặng ngay 1 bánh Cookie thơm lừng.
+            <p class="text-gray-700 mt-2">
+              Mua <span class="lemon-text">3 bánh Eclair bất kỳ</span>, được
+              tặng ngay 1 bánh Cookie thơm lừng.
             </p>
           </div>
         </div>
         <div
-          class="event-card rounded-xl shadow-lg p-4 flex items-center space-x-4"
+          class="event-card rounded-xl shadow-lg p-6 flex flex-col sm:flex-row items-center sm:space-x-6 space-y-4 sm:space-y-0"
         >
           <img
-            src="images/cnl/7.png"
+            src="images/events/2.png"
             alt="Cannoli"
-            class="w-24 h-24 object-cover rounded-full border-4 border-yellow-300"
+            class="w-48 h-48 object-cover rounded-xl border-4 border-yellow-300 flex-shrink-0"
           />
-          <div>
-            <h3 class="text-xl font-bold lobster-font text-yellow-600">
+          <div class="text-center sm:text-left">
+            <h3 class="text-2xl font-bold lobster-font text-yellow-600">
               Thứ Ba
             </h3>
-            <p class="text-gray-700">
-              Thưởng thức bánh Cannoli chuẩn vị Ý với giá ưu đãi chỉ
-              12.000đ/cái.
+            <p class="text-gray-700 mt-2">
+              Thưởng thức <span class="lemon-text">bánh Cannoli</span> chuẩn vị
+              Ý với giá ưu đãi chỉ 12.000đ/cái.
             </p>
           </div>
         </div>
         <div
-          class="event-card rounded-xl shadow-lg p-4 flex items-center space-x-4"
+          class="event-card rounded-xl shadow-lg p-6 flex flex-col sm:flex-row items-center sm:space-x-6 space-y-4 sm:space-y-0"
         >
           <img
-            src="images/clafoutis/1.png"
+            src="images/events/3.png"
             alt="Clafoutis"
-            class="w-24 h-24 object-cover rounded-full border-4 border-yellow-300"
+            class="w-48 h-48 object-cover rounded-xl border-4 border-yellow-300 flex-shrink-0"
           />
-          <div>
-            <h3 class="text-xl font-bold lobster-font text-yellow-600">
+          <div class="text-center sm:text-left">
+            <h3 class="text-2xl font-bold lobster-font text-yellow-600">
               Thứ Tư
             </h3>
-            <p class="text-gray-700">
-              Mua 1 bánh Clafoutis, bạn sẽ được tặng kèm 1 bánh Cookie ngọt
+            <p class="text-gray-700 mt-2">
+              Mua <span class="lemon-text">1 bánh Clafoutis</span>, bạn sẽ được
+              tặng kèm <span class="lemon-text">1 bánh Cookie ngọt</span>
               ngào.
             </p>
           </div>
         </div>
         <div
-          class="event-card rounded-xl shadow-lg p-4 flex items-center space-x-4"
+          class="event-card rounded-xl shadow-lg p-6 flex flex-col sm:flex-row items-center sm:space-x-6 space-y-4 sm:space-y-0"
         >
           <img
-            src="images/bccc/1.png"
+            src="images/events/4.png"
             alt="Cheesecake"
-            class="w-24 h-24 object-cover rounded-full border-4 border-yellow-300"
+            class="w-48 h-48 object-cover rounded-xl border-4 border-yellow-300 flex-shrink-0"
           />
-          <div>
-            <h3 class="text-xl font-bold lobster-font text-yellow-600">
+          <div class="text-center sm:text-left">
+            <h3 class="text-2xl font-bold lobster-font text-yellow-600">
               Thứ Năm
             </h3>
-            <p class="text-gray-700">
-              Khi mua 1 bánh Cheesecake, Lemon Patisserie tặng bạn 1 bánh
-              Canelé.
+            <p class="text-gray-700 mt-2">
+              Khi mua <span class="lemon-text">1 bánh Cheesecake</span>, Lemon
+              Patisserie <span class="lemon-text">tặng bạn 1 bánh Canelé</span>.
             </p>
           </div>
         </div>
         <div
-          class="event-card rounded-xl shadow-lg p-4 flex items-center space-x-4"
+          class="event-card rounded-xl shadow-lg p-6 flex flex-col sm:flex-row items-center sm:space-x-6 space-y-4 sm:space-y-0"
         >
           <img
-            src="images/cnl/8.png"
+            src="images/events/5.png"
             alt="12 Cannoli"
-            class="w-24 h-24 object-cover rounded-full border-4 border-yellow-300"
+            class="w-48 h-48 object-cover rounded-xl border-4 border-yellow-300 flex-shrink-0"
           />
-          <div>
-            <h3 class="text-xl font-bold lobster-font text-yellow-600">
+          <div class="text-center sm:text-left">
+            <h3 class="text-2xl font-bold lobster-font text-yellow-600">
               Thứ Sáu
             </h3>
-            <p class="text-gray-700">
+            <p class="text-gray-700 mt-2">
               Ưu đãi cực lớn: Mua 12 bánh Cannoli với giá chỉ 12.000đ.
             </p>
           </div>
         </div>
         <div
-          class="event-card rounded-xl shadow-lg p-4 flex items-center space-x-4"
+          class="event-card rounded-xl shadow-lg p-6 flex flex-col sm:flex-row items-center sm:space-x-6 space-y-4 sm:space-y-0"
         >
           <img
-            src="images/blc/2.png"
+            src="images/events/6.png"
             alt="Birthday Cake"
-            class="w-24 h-24 object-cover rounded-full border-4 border-yellow-300"
+            class="w-48 h-48 object-cover rounded-xl border-4 border-yellow-300 flex-shrink-0"
           />
-          <div>
-            <h3 class="text-xl font-bold lobster-font text-yellow-600">
+          <div class="text-center sm:text-left">
+            <h3 class="text-2xl font-bold lobster-font text-yellow-600">
               Thứ Bảy
             </h3>
-            <p class="text-gray-700">
-              Mua một bánh sinh nhật bất kỳ và nhận ngay 3 bánh Cannoli miễn
-              phí.
+            <p class="text-gray-700 mt-2">
+              Mua <span class="lemon-text">một bánh sinh nhật bất kỳ</span> và
+              <span class="lemon-text">nhận ngay 3 bánh Cannoli</span> miễn phí.
             </p>
           </div>
         </div>
         <div
-          class="event-card rounded-xl shadow-lg p-4 flex items-center space-x-4 md:col-span-2"
+          class="event-card rounded-xl shadow-lg p-6 flex flex-col sm:flex-row items-center sm:space-x-6 space-y-4 sm:space-y-0"
         >
           <img
-            src="images/cnl/1.png"
+            src="images/events/7.png"
             alt="Quà cho bé"
-            class="w-24 h-24 object-cover rounded-full border-4 border-yellow-300"
+            class="w-48 h-48 object-cover rounded-xl border-4 border-yellow-300 flex-shrink-0"
           />
-          <div>
-            <h3 class="text-xl font-bold lobster-font text-yellow-600">
+          <div class="text-center sm:text-left">
+            <h3 class="text-2xl font-bold lobster-font text-yellow-600">
               Chủ Nhật
             </h3>
-            <p class="text-gray-700">
-              Quà tặng đặc biệt cho các bé từ 6 tuổi trở xuống: 1 bánh Cannoli
-              hoặc 1 bánh Cookie.
+            <p class="text-gray-700 mt-2">
+              Quà tặng đặc biệt cho
+              <span class="lemon-text">các bé từ 6 tuổi trở xuống</span>: 1 bánh
+              Cannoli hoặc 1 bánh Cookie.
             </p>
           </div>
         </div>
       </div>
+      <!-- END CHANGE -->
     </main>
 
-    <!-- FOOTER -->
+    <!-- FOOTER (Đồng bộ từ order.html) -->
     <footer
-      class="text-center mt-12 p-8 bg-white/50 border-t-2 border-yellow-200"
+      class="text-center mt-12 p-8 bg-white/50 border-t-2 border-yellow-200 relative z-10"
     >
       <section class="text-center mb-6">
         <h3 class="text-md font-bold text-gray-800 mb-4">
           Kết Nối Với Lemon Patisserie
         </h3>
         <div class="flex justify-center space-x-8">
+          <!-- Facebook Icon -->
           <a
             href="https://www.facebook.com/lemonpatisserievn?mibextid=LQQJ4d&mibextid=LQQJ4d"
             target="_blank"
+            class="transition transform hover:scale-125"
             aria-label="Facebook"
           >
             <img
               src="images/fbicon.webp"
               alt="Facebook Icon"
-              class="social-icon-img"
+              class="w-10 h-10 object-cover"
+              onerror="this.onerror=null; this.src='https://placehold.co/40x40/3B5998/FFFFFF?text=FB';"
             />
           </a>
+          <!-- Instagram Icon -->
           <a
             href="https://www.instagram.com/lemonpatisserie.vn/?igsh=MXIyeGxuZmZycnd6aA%3D%3D&utm_source=qr"
             target="_blank"
+            class="transition transform hover:scale-125"
             aria-label="Instagram"
           >
             <img
               src="images/Instagram_icon.png"
               alt="Instagram Icon"
-              class="social-icon-img"
+              class="w-10 h-10 object-cover"
+              onerror="this.onerror=null; this.src='https://placehold.co/40x40/E1306C/FFFFFF?text=IG';"
             />
           </a>
+          <!-- TikTok Icon -->
           <a
             href="https://www.tiktok.com/@lemonpatisserie.vn?_t=ZS-90WBJuYfmTf&_r=1"
             target="_blank"
+            class="transition transform hover:scale-125"
             aria-label="TikTok"
           >
             <img
               src="images/tiktokicon.png"
               alt="TikTok Icon"
-              class="social-icon-img"
+              class="w-10 h-10 object-cover"
+              onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=TK';"
             />
           </a>
         </div>
       </section>
+
+      <!-- Footer/Thông tin liên hệ -->
       <div class="pt-4 border-t border-gray-100">
         <p class="text-sm text-gray-500">Mọi chi tiết xin liên hệ:</p>
         <p class="text-md font-semibold text-gray-700">Hotline: 032 551 6166</p>
