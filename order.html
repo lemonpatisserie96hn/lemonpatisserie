@@ -263,6 +263,23 @@
       }
       /* === END: Thêm hiệu ứng cho Navbar === */
 
+      /* START: Hiệu ứng breathing cho nút "CHỌN" */
+      .select-btn-breathing {
+        animation: select-breathing 2s ease-in-out infinite;
+      }
+
+      @keyframes select-breathing {
+        0%, 100% {
+          transform: scale(1);
+          filter: brightness(1);
+        }
+        50% {
+          transform: scale(1.03);
+          filter: brightness(1.1);
+        }
+      }
+      /* END: Hiệu ứng breathing cho nút "CHỌN" */
+
       /* START: Style cho ảnh nền danh mục */
       .category-background-image {
         position: absolute;
@@ -388,9 +405,7 @@
             class="transition transform hover:scale-110"
             aria-label="Xem sự kiện"
           >
-            <!-- START CHANGE: Chỉnh lại kích thước icon -->
             <img src="event.gif" alt="Sự kiện" class="h-10 w-10 event-glow" />
-            <!-- END CHANGE -->
           </a>
 
           <!-- Menu Button -->
@@ -510,20 +525,9 @@
         class="max-w-4xl mx-auto flex justify-between items-center text-gray-800"
       >
         <div class="flex items-center space-x-2">
-          <svg
-            xmlns="http://www.w3.org/2000/svg"
-            class="h-6 w-6 lemon-text"
-            fill="none"
-            viewBox="0 0 24 24"
-            stroke="currentColor"
-            stroke-width="2"
-          >
-            <path
-              stroke-linecap="round"
-              stroke-linejoin="round"
-              d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
-            />
-          </svg>
+          <!-- START CHANGE: Thay thế icon SVG bằng GIF -->
+          <img src="cart.gif" alt="Giỏ hàng" class="h-8 w-8" />
+          <!-- END CHANGE -->
           <span id="cart-item-count" class="font-bold text-lg">0</span>
           <span class="text-sm">món | Tổng:</span>
           <span id="cart-total" class="font-black text-xl lemon-text">0 đ</span>
@@ -916,7 +920,7 @@
           `Địa chỉ: ${orderForm.address.value}\n` +
           `Yêu cầu Hóa đơn: ${invoiceRequestValue}\n` +
           `Ghi chú: ${orderForm.note.value || "Không có"}\n\n` +
-          `Chi tiết đơn hàng:\n${cartItemsList.replace(/ \| /g, "\n")}`;
+          `Chi tiết đơn hàng:\n${cartItemsList.replace(/\n/g, "<br>")}`;
 
         const successModal = document.createElement("div");
         successModal.innerHTML = `
@@ -992,6 +996,12 @@
             currentQuantity > 0 ? `THÊM (+) (${currentQuantity})` : "CHỌN";
           button.classList.toggle("bg-yellow-600", currentQuantity > 0);
           button.classList.toggle("bg-yellow-400", currentQuantity === 0);
+          // START CHANGE: Thêm/xóa class animation
+          button.classList.toggle(
+            "select-btn-breathing",
+            currentQuantity === 0
+          );
+          // END CHANGE
 
           if (minusButton) {
             minusButton.disabled = currentQuantity === 0;
@@ -1069,6 +1079,10 @@
                                 : "bg-yellow-400";
                             const minusDisabled =
                               currentQuantity === 0 ? "disabled" : "";
+                            const breathingClass =
+                              currentQuantity === 0
+                                ? "select-btn-breathing"
+                                : ""; // START CHANGE: Thêm class animation
 
                             const itemDescription = item.description
                               ? `<p class="text-xs text-gray-600 mt-1 min-h-[40px]">${item.description}</p>`
@@ -1102,7 +1116,7 @@
                                             data-item="${itemName}" 
                                             data-price="${itemPrice}" 
                                             data-action="plus"
-                                            class="select-btn font-bold py-1 rounded-full w-3/4 hover:bg-yellow-500 transition ${buttonClass} select-btn-text"
+                                            class="select-btn font-bold py-1 rounded-full w-3/4 hover:bg-yellow-500 transition ${buttonClass} select-btn-text ${breathingClass}"
                                         >${buttonText}</button>
                                     </div>
                                 </div>
