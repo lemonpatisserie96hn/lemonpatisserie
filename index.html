@@ -3,18 +3,17 @@
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Lemon Patisserie - Voucher Mua 1 Tặng 1</title>
+    <title>Lemon Patisserie - Tiệm Bánh Ngọt</title>
     <!-- Tải Tailwind CSS CDN -->
     <script src="https://cdn.tailwindcss.com"></script>
-    <!-- Tải Font Montserrat Bold -->
+    <!-- Tải Font Montserrat & Lobster -->
     <link
-      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@700&family=Lobster&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;700&family=Lobster&display=swap"
       rel="stylesheet"
     />
     <style>
       body {
         font-family: "Montserrat", sans-serif;
-        font-weight: 700;
         background-color: #fef9e7; /* Màu kem nhạt */
         overflow-x: hidden; /* Ngăn chặn cuộn ngang */
       }
@@ -32,6 +31,7 @@
           0 4px 6px -2px rgba(253, 224, 71, 0.2);
       }
 
+      /* === Hiệu ứng cho nút bấm và các thành phần === */
       @keyframes breathing {
         0%,
         100% {
@@ -41,7 +41,7 @@
           transform: scale(1.02);
         }
       }
-      .voucher-breathing {
+      .element-breathing {
         animation: breathing 4s ease-in-out infinite;
       }
 
@@ -58,15 +58,13 @@
         animation: pulse-shadow 2s infinite;
       }
 
-      #reveal-cover {
+      /* === Màn hình chào mừng và hiệu ứng mở ra === */
+      #welcome-gate {
         position: fixed;
         top: 0;
         left: 0;
         width: 100%;
         height: 100%;
-        /* START CHANGE: Bỏ background để hiệu ứng nền hiển thị */
-        /* background-color: #fef9e7; */
-        /* END CHANGE */
         z-index: 50;
         display: flex;
         flex-direction: column;
@@ -74,25 +72,15 @@
         align-items: center;
         transition: opacity 1s ease-in-out, transform 1s ease-in-out;
         padding: 20px;
+        background-color: #fef9e7;
       }
-      #reveal-cover.is-revealed {
+      #welcome-gate.is-opened {
         opacity: 0;
-        transform: scale(1.1);
+        transform: scale(1.1); /* Hiệu ứng zoom ra khi biến mất */
         pointer-events: none;
       }
 
-      #voucher-container {
-        opacity: 0;
-        transform: translateY(20px);
-        transition: opacity 0.8s ease-in-out 0.5s,
-          transform 0.8s ease-in-out 0.5s;
-      }
-      #voucher-container.is-active {
-        opacity: 1;
-        transform: translateY(0);
-      }
-
-      .gift-box {
+      .welcome-box {
         background-color: #ffffff;
         border: 4px solid #fde047;
         padding: 30px 20px;
@@ -101,8 +89,8 @@
         text-align: center;
         width: 100%;
         max-width: 380px;
-        position: relative; /* Đảm bảo gift-box có stacking context riêng */
-        z-index: 51; /* Cao hơn hiệu ứng nền */
+        position: relative;
+        z-index: 51;
       }
 
       .open-button {
@@ -116,7 +104,19 @@
         transition: background-color 0.3s;
       }
 
-      /* === START: Đồng bộ hiệu ứng bánh rơi từ order.html/event.html === */
+      /* === Hiệu ứng zoom in cho nội dung chính === */
+      #main-content {
+        opacity: 0;
+        transform: scale(0.9) translateY(20px); /* Bắt đầu nhỏ và dịch chuyển xuống */
+        transition: opacity 0.8s ease-in-out 0.5s,
+          transform 0.8s ease-in-out 0.5s;
+      }
+      #main-content.is-active {
+        opacity: 1;
+        transform: scale(1) translateY(0); /* Zoom về kích thước bình thường */
+      }
+
+      /* === HIỆU ỨNG BÁNH RƠI MỚI (TỪ ORDER.HTML) === */
       .bg-animated-item {
         position: fixed;
         top: -10%;
@@ -124,7 +124,7 @@
         height: 65px;
         opacity: 0;
         animation: fall-in-background linear infinite;
-        z-index: 0; /* Nằm dưới mọi thứ */
+        z-index: 0;
         user-select: none;
         pointer-events: none;
       }
@@ -373,14 +373,7 @@
         width: 116px;
         height: 116px;
       }
-      /* === END: Đồng bộ hiệu ứng bánh rơi === */
 
-      .responsive-voucher-image {
-        width: 100%;
-        height: auto;
-        max-width: 100%;
-        transform: translateZ(0); /* Kích hoạt hardware acceleration */
-      }
       .social-icon-img {
         width: 40px;
         height: 40px;
@@ -389,10 +382,76 @@
       .social-icon-img:hover {
         transform: scale(1.25);
       }
+
+      /* === CSS MỚI CHO NAVBAR === */
+      .event-glow {
+        animation: event-breathing 1.5s ease-out infinite;
+      }
+
+      @keyframes event-breathing {
+        0%,
+        100% {
+          filter: drop-shadow(0 0 3px #fff) drop-shadow(0 0 6px #fde047)
+            drop-shadow(0 0 10px #fde047);
+        }
+        50% {
+          filter: drop-shadow(0 0 6px #fff) drop-shadow(0 0 12px #fde047)
+            drop-shadow(0 0 20px #fde047);
+        }
+      }
     </style>
   </head>
   <body>
-    <!-- START CHANGE: Đồng bộ hiệu ứng mưa bánh ngọt -->
+    <!-- HEADER MỚI -->
+    <header
+      class="sticky top-0 z-30 shadow-md"
+      style="
+        background-image: linear-gradient(to right, #fff085, #fcb454, #ff9b17);
+      "
+    >
+      <div class="max-w-4xl mx-auto p-4 flex justify-between items-center">
+        <!-- Left: Title -->
+        <h1 class="text-3xl font-black text-gray-900 lobster-font">
+          Lemon <span class="lemon-text">Patisserie</span>
+        </h1>
+
+        <!-- Right: Icons -->
+        <div class="flex items-center space-x-3 sm:space-x-4">
+          <!-- Icon Sự kiện -->
+          <a
+            href="event.html"
+            class="transition transform hover:scale-110"
+            aria-label="Xem sự kiện"
+          >
+            <img src="event.gif" alt="Sự kiện" class="h-10 w-10 event-glow" />
+          </a>
+
+          <!-- Nút đến trang Order -->
+          <a
+            href="order.html"
+            class="p-2 rounded-full hover:bg-yellow-300/60 transition"
+            aria-label="Đi đến trang đặt bánh"
+          >
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-7 w-7 text-gray-800"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+              stroke-width="2"
+            >
+              <path
+                stroke-linecap="round"
+                stroke-linejoin="round"
+                d="M3 3h2l.4 2M7 13h10l4-8H5.4M7 13L5.4 5M7 13l-2.293 2.293c-.63.63-.184 1.707.707 1.707H17m0 0a2 2 0 100 4 2 2 0 000-4zm-8 2a2 2 0 11-4 0 2 2 0 014 0z"
+              />
+            </svg>
+          </a>
+        </div>
+      </div>
+    </header>
+
+    <!-- HIỆU ỨNG BÁNH RƠI MỚI -->
     <div id="background-animation-container">
       <!-- Lớp 1: Bánh nhỏ -->
       <img
@@ -461,38 +520,39 @@
       <img class="bg-animated-item" src="images/8.png" alt="Bánh ngọt rơi" />
       <img class="bg-animated-item" src="images/7.png" alt="Bánh ngọt rơi" />
     </div>
-    <!-- END CHANGE -->
 
+    <!-- Nhạc nền (Giữ nguyên) -->
     <audio id="background-music" loop muted autoplay>
       <source src="aaab.m4a" type="audio/mp4" />
-      Trình duyệt của bạn không hỗ trợ phần tử audio.
+      Trình duyệt của bạn không hỗ trợ.
     </audio>
 
-    <div id="reveal-cover">
-      <div class="gift-box w-11/12 max-w-sm">
+    <!-- Màn hình chào mừng mới (Giữ nguyên) -->
+    <div id="welcome-gate">
+      <div class="welcome-box w-11/12 max-w-sm">
         <img
           src="images/LOGO PNG.png"
-          alt="Bạn có một món quà"
+          alt="Chào mừng đến với Lemon Patisserie"
           class="w-full h-auto mb-4"
-          onerror="this.onerror=null; this.src='https://placehold.co/300x150/fef9e7/d97706?text=BẠN+CÓ+MỘT+MÓN+QUÀ';"
+          onerror="this.onerror=null; this.src='https://placehold.co/300x150/fef9e7/d97706?text=Lemon+Patisserie';"
         />
-        <p class="text-gray-600 mt-2 text-sm">
-          Nhấn vào nút bên dưới để mở thư mời và khám phá ưu đãi đặc biệt từ
+        <p class="text-gray-600 mt-2 text-sm px-4">
+          Chào mừng bạn đến với ngôi nhà của những chiếc bánh tinh tế và ngọt
+          ngào.
         </p>
-        <p class="lobster-font text-lg lemon-text">Lemon Patisserie</p>
-        <button id="open-gift-btn" class="open-button cta-button mt-8">
-          BẤM ĐỂ MỞ NGAY
+        <p class="lobster-font text-lg lemon-text mt-2">Lemon Patisserie</p>
+        <button id="open-bakery-btn" class="open-button cta-button mt-8">
+          KHÁM PHÁ TIỆM BÁNH
         </button>
       </div>
     </div>
 
-    <!-- START CHANGE: Cải thiện responsive cho container chính -->
-    <div class="flex items-start justify-center min-h-screen p-4">
+    <!-- Nội dung chính của trang -->
+    <div class="flex items-start justify-center min-h-screen p-4 pt-8 md:pt-16">
       <div
-        id="voucher-container"
-        class="w-full max-w-md md:max-w-2xl bg-white p-6 md:p-8 rounded-2xl shadow-2xl border-4 border-yellow-300 relative z-10"
+        id="main-content"
+        class="w-full max-w-md md:max-w-4xl bg-white p-6 md:p-8 rounded-2xl shadow-2xl border-4 border-yellow-300 relative z-10"
       >
-        <!-- END CHANGE -->
         <div class="relative z-10">
           <header class="text-center mb-6">
             <img
@@ -509,75 +569,142 @@
             </div>
           </header>
 
-          <div
-            class="text-center mb-6 shadow-lemon rounded-xl overflow-hidden voucher-breathing"
-          >
-            <img
-              src="images/voucher.png"
-              alt="Voucher Mua 1 Tặng 1 từ Lemon Patisserie"
-              class="responsive-voucher-image"
-              onerror="this.onerror=null; this.src='https://placehold.co/400x200/FDE047/333333?text=VOUCHER+MUA+1+TẶNG+1';"
-            />
-          </div>
+          <!-- Nội dung giới thiệu tiệm bánh -->
+          <section class="text-center">
+            <h2 class="text-3xl lobster-font lemon-text mb-4">
+              Hành Trình Vị Giác Tại Lemon Patisserie
+            </h2>
+            <p class="text-gray-700 mb-10 leading-relaxed max-w-2xl mx-auto">
+              Tại Lemon Patisserie, mỗi chiếc bánh là một tác phẩm nghệ thuật,
+              được tạo ra từ niềm đam mê, sự tỉ mỉ và những nguyên liệu tươi
+              ngon nhất. Mời bạn cùng dạo một vòng quanh ngôi nhà ngọt ngào của
+              chúng tôi.
+            </p>
 
-          <section class="mb-6">
-            <h3
-              class="text-xl font-bold text-gray-800 mb-3 border-b-2 border-yellow-300 pb-1 lobster-font"
-            >
-              Cách thức nhận Voucher
-            </h3>
-            <div
-              class="grid grid-cols-1 gap-4 text-gray-700"
-              style="grid-auto-rows: 1fr"
-            >
+            <!-- Bố cục Eclair Collection -->
+            <div class="mb-10 p-4 bg-yellow-50 rounded-lg">
+              <h3 class="font-bold text-2xl lobster-font text-gray-800 mb-4">
+                Bộ sưu tầm Eclair mới
+              </h3>
+              <div class="grid grid-cols-2 md:grid-cols-4 gap-4 mb-4">
+                <div
+                  class="w-full aspect-[3/4] transition-transform duration-300 hover:scale-105"
+                >
+                  <img
+                    src="images/intro/1.jpg"
+                    alt="Eclair vị Dâu"
+                    class="w-full h-full object-cover rounded-lg shadow-md"
+                  />
+                </div>
+                <div
+                  class="w-full aspect-[3/4] transition-transform duration-300 hover:scale-105"
+                >
+                  <img
+                    src="images/intro/2.jpg"
+                    alt="Eclair vị Chocolate"
+                    class="w-full h-full object-cover rounded-lg shadow-md"
+                  />
+                </div>
+                <div
+                  class="w-full aspect-[3/4] transition-transform duration-300 hover:scale-105"
+                >
+                  <img
+                    src="images/intro/3.jpg"
+                    alt="Eclair vị Trà xanh"
+                    class="w-full h-full object-cover rounded-lg shadow-md"
+                  />
+                </div>
+                <div
+                  class="w-full aspect-[3/4] transition-transform duration-300 hover:scale-105"
+                >
+                  <img
+                    src="images/intro/4.jpg"
+                    alt="Eclair vị Chanh"
+                    class="w-full h-full object-cover rounded-lg shadow-md"
+                  />
+                </div>
+              </div>
+              <p class="text-sm text-gray-600 max-w-2xl mx-auto">
+                Khám phá bộ sưu tập Eclair mới với những hương vị bùng nổ và
+                trang trí đầy nghệ thuật, từ dâu tây ngọt ngào đến chocolate đậm
+                đà.
+              </p>
+            </div>
+
+            <!-- Bố cục các sản phẩm còn lại -->
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8 mb-8">
               <div
-                class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm h-full border border-yellow-100"
+                class="flex flex-col items-center text-center p-4 bg-yellow-50 rounded-lg transform hover:scale-105 transition-transform duration-300"
               >
-                <span class="text-2xl mr-3 flex-shrink-0">🎉</span>
-                <p class="flex-grow">
-                  Lemon Patisserie chuẩn bị trình làng **Menu Eclair mới** cùng
-                  nhiều hương vị độc đáo khác!
+                <div class="w-full aspect-[3/4] mb-3">
+                  <img
+                    src="images/intro/5.jpg"
+                    alt="Quà tặng tinh tế cho 20/10"
+                    class="w-full h-full object-cover rounded-lg shadow-md"
+                  />
+                </div>
+                <h3 class="font-bold text-lg text-gray-800 mb-1">
+                  Quà tặng tinh tế cho 20/10
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Dành tặng người phụ nữ bạn yêu thương những hộp quà bánh ngọt
+                  ngào, sang trọng và đầy ý nghĩa.
                 </p>
               </div>
-
               <div
-                class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm h-full border border-yellow-100"
+                class="flex flex-col items-center text-center p-4 bg-yellow-50 rounded-lg transform hover:scale-105 transition-transform duration-300"
               >
-                <span class="text-2xl mr-3 flex-shrink-0">🗓️</span>
-                <p class="flex-grow">
-                  Khách hàng ghé thăm và mua bất kỳ sản phẩm nào tại tiệm vào
-                  hai ngày:
-                  <span class="block text-lg font-extrabold text-red-500 mt-1"
-                    >14 & 15/10/2025</span
-                  >
+                <div class="w-full aspect-[3/4] mb-3">
+                  <img
+                    src="images/intro/6.png"
+                    alt="Bánh Canele"
+                    class="w-full h-full object-cover rounded-lg shadow-md"
+                  />
+                </div>
+                <h3 class="font-bold text-lg text-gray-800 mb-1">Canele</h3>
+                <p class="text-sm text-gray-600">
+                  Vỏ ngoài caramel giòn tan, cốt bánh mềm ẩm hương vani và rượu
+                  rum. Một đặc sản cổ điển từ nước Pháp.
                 </p>
               </div>
-
               <div
-                class="flex items-start bg-gray-50 p-4 rounded-lg shadow-sm h-full border border-yellow-100"
+                class="flex flex-col items-center text-center p-4 bg-yellow-50 rounded-lg transform hover:scale-105 transition-transform duration-300"
               >
-                <span class="text-2xl mr-3 flex-shrink-0">🎁</span>
-                <p class="flex-grow">
-                  Bạn sẽ nhận ngay **VOUCHER MUA 1 TẶNG 1** để sử dụng cho menu
-                  mới khi chính thức được mở bán.
+                <div class="w-full aspect-[3/4] mb-3">
+                  <img
+                    src="images/intro/7.jpg"
+                    alt="Bánh cho Sức khỏe"
+                    class="w-full h-full object-cover rounded-lg shadow-md"
+                  />
+                </div>
+                <h3 class="font-bold text-lg text-gray-800 mb-1">
+                  Bánh cho Sức khỏe
+                </h3>
+                <p class="text-sm text-gray-600">
+                  Thưởng thức vị ngọt tự nhiên từ các loại bánh healthy, ít
+                  đường, phù hợp cho người ăn kiêng, tập luyện.
+                </p>
+              </div>
+              <div
+                class="flex flex-col items-center text-center p-4 bg-yellow-50 rounded-lg transform hover:scale-105 transition-transform duration-300"
+              >
+                <div class="w-full aspect-[3/4] mb-3">
+                  <img
+                    src="images/intro/8.jpg"
+                    alt="Bánh Tiramisu"
+                    class="w-full h-full object-cover rounded-lg shadow-md"
+                  />
+                </div>
+                <h3 class="font-bold text-lg text-gray-800 mb-1">Tiramisu</h3>
+                <p class="text-sm text-gray-600">
+                  Lớp kem mascarpone béo ngậy, bánh ladyfinger thấm đẫm cà phê
+                  và một chút nồng nàn của rượu.
                 </p>
               </div>
             </div>
           </section>
 
-          <section class="p-4 bg-gray-50 rounded-lg border border-gray-200">
-            <h3
-              class="text-lg font-bold text-gray-800 mb-2 flex items-center lobster-font"
-            >
-              <span class="text-2xl mr-2">✨</span> Lưu ý
-            </h3>
-            <ul class="text-sm text-gray-600 list-disc ml-5 space-y-1">
-              <li>Voucher áp dụng cho Menu Eclair và các món bánh mới.</li>
-              <li>Chương trình áp dụng đến hết ngày 15/10/2025</li>
-              <li>Đây là cơ hội tuyệt vời để bạn trải nghiệm hương vị mới!</li>
-            </ul>
-          </section>
-
+          <!-- Nút đặt bánh (Giữ nguyên) -->
           <div class="text-center mt-6">
             <a
               href="order.html"
@@ -586,16 +713,33 @@
             >
               ĐẶT BÁNH NGAY
             </a>
-            <div class="mt-4">
-              <img
-                src="images/box.jpg"
-                alt="Hình ảnh quảng cáo chương trình Mua 1 Tặng 1"
-                class="w-full h-auto rounded-lg shadow-md mx-auto"
-                onerror="this.onerror=null; this.src='https://placehold.co/400x200/FDE047/333333?text=Nơi+Đặt+Ảnh+Design+Của+Bạn';"
-              />
-            </div>
           </div>
 
+          <!-- Lời nhắn từ chủ tiệm (CẬP NHẬT KÍCH CỠ ẢNH) -->
+          <section class="mt-12 py-10">
+            <div
+              class="flex flex-col md:flex-row items-center justify-center gap-8 bg-white p-8 rounded-2xl shadow-lemon"
+            >
+              <img
+                src="images/owner.png"
+                alt="Hình ảnh chủ tiệm bánh Lemon Patisserie"
+                class="w-56 h-56 md:w-60 md:h-60 object-cover rounded-2xl shadow-lg border-4 border-white"
+              />
+              <div class="text-center md:text-left">
+                <h3 class="text-2xl lobster-font lemon-text mb-2">
+                  Từ Trái Tim Người Thợ Bánh
+                </h3>
+                <p class="text-gray-600 leading-relaxed">
+                  "Xin chào, mình là Sơn. Mỗi chiếc bánh tại Lemon Patisserie
+                  không chỉ là một món ăn, mà còn là tâm huyết và niềm vui của
+                  mình. Cảm ơn bạn đã ghé thăm và hy vọng bạn sẽ có những trải
+                  nghiệm thật ngọt ngào tại đây!"
+                </p>
+              </div>
+            </div>
+          </section>
+
+          <!-- Footer (Giữ nguyên) -->
           <footer
             class="text-center mt-12 p-8 bg-white/50 border-t-2 border-yellow-200 relative z-10"
           >
@@ -604,45 +748,39 @@
                 Kết Nối Với Lemon Patisserie
               </h3>
               <div class="flex justify-center space-x-8">
-                <!-- Facebook Icon -->
                 <a
                   href="https://www.facebook.com/lemonpatisserievn?mibextid=LQQJ4d&mibextid=LQQJ4d"
                   target="_blank"
-                  class="transition transform hover:scale-125"
                   aria-label="Facebook"
                 >
                   <img
                     src="images/fbicon.webp"
                     alt="Facebook Icon"
-                    class="w-10 h-10 object-cover"
+                    class="social-icon-img"
                     onerror="this.onerror=null; this.src='https://placehold.co/40x40/3B5998/FFFFFF?text=FB';"
                   />
                 </a>
-                <!-- Instagram Icon -->
                 <a
                   href="https://www.instagram.com/lemonpatisserie.vn/?igsh=MXIyeGxuZmZycnd6aA%3D%3D&utm_source=qr"
                   target="_blank"
-                  class="transition transform hover:scale-125"
                   aria-label="Instagram"
                 >
                   <img
                     src="images/Instagram_icon.png"
                     alt="Instagram Icon"
-                    class="w-10 h-10 object-cover"
+                    class="social-icon-img"
                     onerror="this.onerror=null; this.src='https://placehold.co/40x40/E1306C/FFFFFF?text=IG';"
                   />
                 </a>
-                <!-- TikTok Icon -->
                 <a
                   href="https://www.tiktok.com/@lemonpatisserie.vn?_t=ZS-90WChVLnmF8&_r=1"
                   target="_blank"
-                  class="transition transform hover:scale-125"
                   aria-label="TikTok"
                 >
                   <img
                     src="images/tiktokicon.png"
                     alt="TikTok Icon"
-                    class="w-10 h-10 object-cover"
+                    class="social-icon-img"
                     onerror="this.onerror=null; this.src='https://placehold.co/40x40/000000/FFFFFF?text=TK';"
                   />
                 </a>
@@ -654,7 +792,7 @@
                 Mọi chi tiết xin liên hệ:
               </p>
               <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 text-left">
-                <div class="flex items-center p-3 contact-box">
+                <div class="flex items-center p-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-8 w-8 text-yellow-500 mr-3 flex-shrink-0"
@@ -674,7 +812,7 @@
                     <p class="text-md font-bold lemon-text">032 551 6166</p>
                   </div>
                 </div>
-                <div class="flex items-center p-3 contact-box">
+                <div class="flex items-center p-3">
                   <svg
                     xmlns="http://www.w3.org/2000/svg"
                     class="h-8 w-8 text-yellow-500 mr-3 flex-shrink-0"
@@ -709,15 +847,15 @@
     </div>
 
     <script>
-      const cover = document.getElementById("reveal-cover");
-      const voucherContainer = document.getElementById("voucher-container");
-      const openButton = document.getElementById("open-gift-btn");
+      const welcomeGate = document.getElementById("welcome-gate");
+      const mainContent = document.getElementById("main-content");
+      const openButton = document.getElementById("open-bakery-btn");
       const audio = document.getElementById("background-music");
 
-      function revealVoucher() {
-        if (cover.classList.contains("is-revealed")) return; // Ngăn chặn chạy lại
+      function openBakery() {
+        if (welcomeGate.classList.contains("is-opened")) return;
 
-        cover.classList.add("is-revealed");
+        welcomeGate.classList.add("is-opened");
 
         if (audio) {
           audio.muted = false;
@@ -727,22 +865,15 @@
         }
 
         setTimeout(() => {
-          voucherContainer.classList.add("is-active");
+          mainContent.classList.add("is-active");
         }, 100);
 
         setTimeout(() => {
-          cover.style.display = "none";
-        }, 1100);
+          welcomeGate.style.display = "none";
+        }, 1100); // Thời gian này khớp với transition của welcome-gate
       }
 
-      openButton.addEventListener("click", revealVoucher);
-
-      // Cho phép nhấn vào bất kỳ đâu trên cover để mở
-      cover.addEventListener("click", (e) => {
-        if (e.target.id !== "open-gift-btn") {
-          revealVoucher();
-        }
-      });
+      openButton.addEventListener("click", openBakery);
     </script>
   </body>
 </html>
