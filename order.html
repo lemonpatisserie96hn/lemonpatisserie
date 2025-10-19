@@ -679,6 +679,21 @@
               class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
             />
           </div>
+          <!-- START: Thêm trường thời gian nhận bánh -->
+          <div>
+            <label for="delivery-time" class="block text-sm required-label"
+              >Thời gian nhận bánh</label
+            >
+            <input
+              type="text"
+              name="entry.109378467"
+              id="delivery-time"
+              required
+              placeholder="Ví dụ: 3h chiều, hoặc trong khoảng 14h-15h"
+              class="w-full p-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-yellow-400 focus:border-yellow-400"
+            />
+          </div>
+          <!-- END: Thêm trường thời gian nhận bánh -->
           <div>
             <label for="invoice_request" class="block text-sm"
               >Yêu cầu xuất hóa đơn (Không bắt buộc)</label
@@ -994,6 +1009,7 @@
           `Tên: ${orderForm.name.value}\n` +
           `SĐT: ${orderForm.phone.value}\n` +
           `Địa chỉ: ${orderForm.address.value}\n` +
+          `Thời gian nhận: ${orderForm['delivery-time'].value}\n` +
           `Yêu cầu Hóa đơn: ${invoiceRequestValue}\n` +
           `Ghi chú: ${orderForm.note.value || "Không có"}\n\n` +
           `Chi tiết đơn hàng:\n${cartItemsList.replace(/\n/g, "<br>")}`;
